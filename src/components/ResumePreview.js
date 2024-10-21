@@ -29,7 +29,8 @@ const ResumePreview = () => {
     <>
       <Box
         bg={"white"}
-        w={"794px"}
+        w={{ base: "100%", md: "794px" }}
+        maxW={{ base: "400px", md: "none" }}
         h={"1123px"}
         rounded={"md"}
         shadow={"md"}
@@ -69,7 +70,7 @@ const ResumePreview = () => {
             </HStack>
             <HStack spacing={1}>
               <MdLocalPhone />{" "}
-              <Text>{about.phone ? about.phone : "+91 9999999999"}</Text>
+              <Text>{about.phone ? about.phone : "+919999999999"}</Text>
             </HStack>
             <HStack spacing={1}>
               <MdLocationPin />{" "}
