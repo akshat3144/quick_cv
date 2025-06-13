@@ -30,7 +30,7 @@ function App() {
   }, []);
 
   return (
-    <div style={{ backgroundColor: "black" }}>
+    <div style={{ backgroundColor: "var(--chakra-colors-darkBg-900)" }}>
       <ResumeProvider>
         {/* <Navbar /> */}
         <MobileNotice />

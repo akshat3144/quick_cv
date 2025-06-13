@@ -21,6 +21,17 @@ const theme = extendTheme({
       800: "#0a3e8d",
       900: "#05246e",
     },
+    darkBg: {
+      900: "#121318", // Softer than pure black
+      800: "#1a1c23", // For components
+      700: "#23252f", // For hover states
+      600: "#2d303c", // For active elements
+    },
+    textColors: {
+      light: "#f8f9fa",
+      muted: "#ced4da",
+      subtle: "#adb5bd",
+    },
   },
 });
 

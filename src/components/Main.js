@@ -37,24 +37,24 @@ const Main = () => {
 
   return (
     <Box
-      bg={"black"}
+      bg={"darkBg.900"}
       minW={"full"}
       py={14}
       id="builder"
-      backgroundImage="radial-gradient(circle at 10% 20%, rgba(0, 0, 0, 0.8) 0%, rgba(10, 10, 10, 1) 90.2%)"
+      backgroundImage="radial-gradient(circle at 10% 20%, rgba(18, 19, 24, 0.8) 0%, rgba(26, 28, 35, 1) 90.2%)"
     >
       <Container maxW="6xl" textAlign="center" mb={8}>
         <Heading
           as="h2"
           size="2xl"
-          color={"white"}
+          color={"textColors.light"}
           fontFamily="Poppins"
           fontWeight={"semibold"}
           mb={4}
         >
           Builder Dashboard
         </Heading>
-        <Text color="whiteAlpha.700" fontSize="lg" maxW="3xl" mx="auto">
+        <Text color="textColors.subtle" fontSize="lg" maxW="3xl" mx="auto">
           Customize your resume with our easy-to-use builder. Select colors,
           templates, add your details, and download when ready.
         </Text>
@@ -62,8 +62,8 @@ const Main = () => {
 
       <Container maxW={"7xl"} px={{ base: 4, md: 8 }} my={8}>
         <VStack spacing={5} align="stretch">
-          <Box bg="whiteAlpha.100" p={{ base: 4, md: 5 }} borderRadius="lg">
-            <Heading as="h3" size="md" color="white" mb={5}>
+          <Box bg="darkBg.800" p={{ base: 4, md: 5 }} borderRadius="lg">
+            <Heading as="h3" size="md" color="textColors.light" mb={5}>
               Template Settings
             </Heading>
 

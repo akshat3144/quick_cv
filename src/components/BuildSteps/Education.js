@@ -19,31 +19,74 @@ import {
   Text,
   Icon,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React from "react";
 import { useResume } from "../../Context";
-import { MdAdd } from "react-icons/md";
+import { MdAdd, MdDelete } from "react-icons/md";
+import { v4 as uuidv4 } from "uuid";
 
 const Education = () => {
   const { educationList, setEducationList } = useResume();
 
   const addMore = () => {
-    setEducationList([...educationList, educationList]);
+    setEducationList([
+      ...educationList,
+      {
+        id: uuidv4(),
+        degree: "",
+        school: "",
+        startYr: "",
+        endYr: "",
+        grade: "",
+      },
+    ]);
   };
 
-  const handleChange = (e, index) => {
+  const handleChange = (e, id) => {
     const { name, value } = e.target;
-    const updatedEducation = educationList.map((edu, i) =>
-      index === i ? Object.assign(edu, { [name]: value }) : edu
+    const updatedEducation = educationList.map((edu) =>
+      edu.id === id ? { ...edu, [name]: value } : edu
     );
 
     setEducationList(updatedEducation);
   };
 
+  const deleteEducation = (id) => {
+    if (educationList.length > 1) {
+      setEducationList(educationList.filter((edu) => edu.id !== id));
+    } else {
+      // If it's the last item, just reset it instead of removing
+      setEducationList([
+        {
+          id: uuidv4(),
+          degree: "",
+          school: "",
+          startYr: "",
+          endYr: "",
+          grade: "",
+        },
+      ]);
+    }
+  };
+
+  // Ensure all education items have IDs
+  React.useEffect(() => {
+    const updatedList = educationList.map((edu) => {
+      if (!edu.id) {
+        return { ...edu, id: uuidv4() };
+      }
+      return edu;
+    });
+
+    if (JSON.stringify(updatedList) !== JSON.stringify(educationList)) {
+      setEducationList(updatedList);
+    }
+  }, []);
+
   return (
     <>
       <Accordion allowToggle defaultIndex={[0]}>
-        {educationList.map((education, index) => (
-          <AccordionItem key={index}>
+        {educationList.map((education) => (
+          <AccordionItem key={education.id || uuidv4()}>
             <h2>
               <AccordionButton>
                 <Box flex="1" textAlign="left">
@@ -57,14 +100,16 @@ const Education = () => {
             <AccordionPanel pb={4}>
               <VStack spacing={4}>
                 <Input
-                  onChange={(e) => handleChange(e, index)}
+                  value={education.degree || ""}
+                  onChange={(e) => handleChange(e, education.id)}
                   name="degree"
                   type="text"
                   variant="filled"
                   placeholder="Degree"
                 />
                 <Input
-                  onChange={(e) => handleChange(e, index)}
+                  value={education.school || ""}
+                  onChange={(e) => handleChange(e, education.id)}
                   name="school"
                   type="text"
                   variant="filled"
@@ -76,7 +121,8 @@ const Education = () => {
                 <FormControl>
                   <FormLabel htmlFor="startyr">Start Year</FormLabel>
                   <Input
-                    onChange={(e) => handleChange(e, index)}
+                    value={education.startYr || ""}
+                    onChange={(e) => handleChange(e, education.id)}
                     name="startYr"
                     id="startyr"
                     type="number"
@@ -90,21 +136,23 @@ const Education = () => {
                 <FormControl>
                   <FormLabel htmlFor="endyr">End Year</FormLabel>
                   <Input
-                    onChange={(e) => handleChange(e, index)}
+                    value={education.endYr || ""}
+                    onChange={(e) => handleChange(e, education.id)}
                     name="endYr"
                     id="endyr"
                     type="number"
                     variant="filled"
                     min="1900"
                     max="2030"
-                    placeholder="Start Year"
+                    placeholder="End Year"
                   />
                 </FormControl>
 
                 <FormControl>
                   <FormLabel htmlFor="grade">Grade</FormLabel>
                   <Input
-                    onChange={(e) => handleChange(e, index)}
+                    value={education.grade || ""}
+                    onChange={(e) => handleChange(e, education.id)}
                     name="grade"
                     id="grade"
                     type="text"
@@ -113,12 +161,21 @@ const Education = () => {
                   />
                 </FormControl>
               </HStack>
+
+              <Button
+                rightIcon={<MdDelete />}
+                onClick={() => deleteEducation(education.id)}
+                mt={3}
+                colorScheme={"red"}
+              >
+                Delete
+              </Button>
             </AccordionPanel>
           </AccordionItem>
         ))}
       </Accordion>
 
-      {educationList.length < 2 && (
+      {educationList.length < 4 && (
         <Button
           bg="primary.500"
           color="white"

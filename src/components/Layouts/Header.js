@@ -16,8 +16,8 @@ const Header = () => {
   return (
     <>
       <Box
-        bg="black"
-        backgroundImage="linear-gradient(to bottom, rgba(0,0,0,0.8), black)"
+        bg="darkBg.900"
+        backgroundImage="linear-gradient(to bottom, rgba(18, 19, 24, 0.8), var(--chakra-colors-darkBg-900))"
         pt={8}
         pb={20}
       >
@@ -42,7 +42,7 @@ const Header = () => {
                 <Heading
                   fontSize={{ base: "4xl", md: "5xl", lg: "6xl" }}
                   fontFamily="Pacifico"
-                  color="white"
+                  color="textColors.light"
                   mb={4}
                 >
                   QuickCV
@@ -52,7 +52,7 @@ const Header = () => {
                 </Heading>
               </Box>
               <Text
-                color={"whiteAlpha.800"}
+                color={"textColors.muted"}
                 lineHeight={1.8}
                 fontSize="xl"
                 fontFamily="Poppins"
