@@ -1,63 +1,160 @@
-import { TabList, Tabs, Tab, TabPanels, TabPanel, Box, Text } from '@chakra-ui/react'
-import React, { useEffect } from 'react'
-import { useResume } from '../Context'
-import About from './BuildSteps/About'
-import Education from './BuildSteps/Education'
-import Projects from './BuildSteps/Projects'
-import Skills from './BuildSteps/Skills'
-import Work from './BuildSteps/Work'
-import Certificates from './BuildSteps/Certificates'
-import Achievement from './BuildSteps/Achievements'
+import {
+  TabList,
+  Tabs,
+  Tab,
+  TabPanels,
+  TabPanel,
+  Box,
+  Text,
+  Icon,
+} from "@chakra-ui/react";
+import React from "react";
+import About from "./BuildSteps/About";
+import Education from "./BuildSteps/Education";
+import Projects from "./BuildSteps/Projects";
+import Skills from "./BuildSteps/Skills";
+import Work from "./BuildSteps/Work";
+import Certificates from "./BuildSteps/Certificates";
+import Achievement from "./BuildSteps/Achievements";
+import {
+  MdPerson,
+  MdSchool,
+  MdStar,
+  MdWork,
+  MdCode,
+  MdVerified,
+  MdEmojiEvents,
+} from "react-icons/md";
 
 const Builder = () => {
-
-    return (
-        <Box
-            bg={'black'}
-            w={'full'}
-            maxW={'xl'}
-            // minH={'100vh'}
-            rounded={'md'}
-            shadow={'md'}
-            overflow={'hidden'}
-            color={'white'}
+  return (
+    <Box
+      bg={"whiteAlpha.100"}
+      w={"full"}
+      maxW={"xl"}
+      borderRadius={"xl"}
+      shadow={"2xl"}
+      overflow={"hidden"}
+      color={"white"}
+      borderWidth="1px"
+      borderColor="whiteAlpha.200"
+    >
+      <Tabs isFitted variant="enclosed">
+        <TabList
+          overflowX={"auto"}
+          overflowY={"hidden"}
+          borderBottomColor="whiteAlpha.200"
+          sx={{
+            "::-webkit-scrollbar": { height: "4px" },
+            "::-webkit-scrollbar-thumb": {
+              backgroundColor: "whiteAlpha.300",
+              borderRadius: "4px",
+            },
+          }}
         >
-            <Tabs isFitted variant='enclosed'>
-                <TabList overflowX={'auto'} overflowY={'hidden'} sx={{ '::-webkit-scrollbar': { height: '4px' } }}>
-                    <Tab><Text fontWeight={'medium'}>About</Text></Tab>
-                    <Tab><Text fontWeight={'medium'}>Education</Text></Tab>
-                    <Tab><Text fontWeight={'medium'}>Skills</Text></Tab>
-                    <Tab><Text fontWeight={'medium'}>Work</Text></Tab>
-                    <Tab><Text fontWeight={'medium'}>Projects</Text></Tab>
-                    <Tab><Text fontWeight={'medium'}>Certificates</Text></Tab>
-                    <Tab><Text fontWeight={'medium'}>Achievements</Text></Tab>
-                </TabList>
-                <TabPanels>
-                    <TabPanel>
-                        <About />
-                    </TabPanel>
-                    <TabPanel>
-                        <Education />
-                    </TabPanel>
-                    <TabPanel>
-                        <Skills />
-                    </TabPanel>
-                    <TabPanel>
-                        <Work />
-                    </TabPanel>
-                    <TabPanel>
-                        <Projects />
-                    </TabPanel>
-                    <TabPanel>
-                        <Certificates />
-                    </TabPanel>
-                    <TabPanel>
-                        <Achievement />
-                    </TabPanel>
-                </TabPanels>
-            </Tabs>
-        </Box>
-    )
-}
+          <Tab
+            _selected={{
+              color: "white",
+              borderColor: "whiteAlpha.300",
+              borderBottomColor: "primary.500",
+              bg: "whiteAlpha.100",
+            }}
+          >
+            <Icon as={MdPerson} mr={2} />{" "}
+            <Text fontWeight={"medium"}>About</Text>
+          </Tab>
+          <Tab
+            _selected={{
+              color: "white",
+              borderColor: "whiteAlpha.300",
+              borderBottomColor: "primary.500",
+              bg: "whiteAlpha.100",
+            }}
+          >
+            <Icon as={MdSchool} mr={2} />{" "}
+            <Text fontWeight={"medium"}>Education</Text>
+          </Tab>
+          <Tab
+            _selected={{
+              color: "white",
+              borderColor: "whiteAlpha.300",
+              borderBottomColor: "primary.500",
+              bg: "whiteAlpha.100",
+            }}
+          >
+            <Icon as={MdStar} mr={2} />{" "}
+            <Text fontWeight={"medium"}>Skills</Text>
+          </Tab>
+          <Tab
+            _selected={{
+              color: "white",
+              borderColor: "whiteAlpha.300",
+              borderBottomColor: "primary.500",
+              bg: "whiteAlpha.100",
+            }}
+          >
+            <Icon as={MdWork} mr={2} /> <Text fontWeight={"medium"}>Work</Text>
+          </Tab>
+          <Tab
+            _selected={{
+              color: "white",
+              borderColor: "whiteAlpha.300",
+              borderBottomColor: "primary.500",
+              bg: "whiteAlpha.100",
+            }}
+          >
+            <Icon as={MdCode} mr={2} />{" "}
+            <Text fontWeight={"medium"}>Projects</Text>
+          </Tab>
+          <Tab
+            _selected={{
+              color: "white",
+              borderColor: "whiteAlpha.300",
+              borderBottomColor: "primary.500",
+              bg: "whiteAlpha.100",
+            }}
+          >
+            <Icon as={MdVerified} mr={2} />{" "}
+            <Text fontWeight={"medium"}>Certificates</Text>
+          </Tab>
+          <Tab
+            _selected={{
+              color: "white",
+              borderColor: "whiteAlpha.300",
+              borderBottomColor: "primary.500",
+              bg: "whiteAlpha.100",
+            }}
+          >
+            <Icon as={MdEmojiEvents} mr={2} />{" "}
+            <Text fontWeight={"medium"}>Achievements</Text>
+          </Tab>
+        </TabList>
+        <TabPanels bg="blackAlpha.400" p={4}>
+          <TabPanel>
+            <About />
+          </TabPanel>
+          <TabPanel>
+            <Education />
+          </TabPanel>
+          <TabPanel>
+            <Skills />
+          </TabPanel>
+          <TabPanel>
+            <Work />
+          </TabPanel>
+          <TabPanel>
+            <Projects />
+          </TabPanel>
+          <TabPanel>
+            <Certificates />
+          </TabPanel>
+          <TabPanel>
+            <Achievement />
+          </TabPanel>
+        </TabPanels>
+      </Tabs>
+    </Box>
+  );
+};
 
-export default Builder
+export default Builder;

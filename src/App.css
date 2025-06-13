@@ -2,6 +2,10 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  background-color: black;
+}
+
 @media screen and (max-width: 600px) {
   nav {
     display: none !important;
@@ -10,19 +14,39 @@ html {
 
 /* Custom scrollbar styles */
 ::-webkit-scrollbar {
-  width: 12px; /* Width of the scrollbar */
+  width: 10px; /* Width of the scrollbar */
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1; /* Background of the scrollbar track */
+  background: rgba(20, 20, 20, 0.8); /* Background of the scrollbar track */
 }
 
 ::-webkit-scrollbar-thumb {
   background-color: #2894ec; /* Color of the scrollbar thumb */
   border-radius: 10px; /* Roundness of the scrollbar thumb */
-  border: 3px solid #2894ec; /* Padding around the scrollbar thumb */
+  border: 2px solid rgba(0, 0, 0, 0.2); /* Border around the scrollbar thumb */
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555; /* Color of the scrollbar thumb on hover */
+  background: #1a77cd; /* Darker color of the scrollbar thumb on hover */
+}
+
+/* Button transitions */
+button {
+  transition: all 0.2s ease-in-out !important;
+}
+
+/* Form focus states */
+input:focus, textarea:focus, select:focus {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Smooth animation for tabs */
+.chakra-tabs__tab {
+  transition: all 0.2s ease;
+}
+
+/* Add smooth hover transitions on all interactive elements */
+a, button, .chakra-tag {
+  transition: all 0.2s ease-in-out !important;
 }
