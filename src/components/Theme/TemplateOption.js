@@ -9,7 +9,7 @@ const TemplateOption = (props) => {
   const checkbox = getCheckboxProps();
 
   return (
-    <Tooltip label={props["data-tooltip"]}>
+    <Tooltip label={props["data-tooltip"]} placement="top">
       <Box as="label">
         <input {...input} />
         <Box
@@ -28,6 +28,7 @@ const TemplateOption = (props) => {
           alignItems="center"
           justifyContent="center"
           color="whiteAlpha.800"
+          minWidth={{ base: "60px", md: "auto" }}
         >
           <Icon as={IconComponent} boxSize={6} />
         </Box>

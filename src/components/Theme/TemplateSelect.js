@@ -25,21 +25,29 @@ const TemplateSelect = () => {
       <Text mb={2} color="white" fontWeight="medium">
         Resume Template
       </Text>
-      <HStack {...group} spacing={4}>
-        {options.map((option) => {
-          const radio = getRadioProps({ value: option.value });
-          return (
-            <TemplateOption
-              key={option.value}
-              icon={option.icon}
-              data-tooltip={option.label}
-              {...radio}
-            >
-              {option.label}
-            </TemplateOption>
-          );
-        })}
-      </HStack>
+      <Flex justifyContent={{ base: "center", sm: "flex-start" }}>
+        <HStack
+          {...group}
+          spacing={4}
+          bg="whiteAlpha.100"
+          p={3}
+          borderRadius="md"
+        >
+          {options.map((option) => {
+            const radio = getRadioProps({ value: option.value });
+            return (
+              <TemplateOption
+                key={option.value}
+                icon={option.icon}
+                data-tooltip={option.label}
+                {...radio}
+              >
+                {option.label}
+              </TemplateOption>
+            );
+          })}
+        </HStack>
+      </Flex>
     </Box>
   );
 };

@@ -1,24 +1,25 @@
 import "./App.css";
-import { useEffect } from 'react';
-import { ResumeProvider } from './Context';
-import './App.css';
-import Header from './components/Layouts/Header';
+import { useEffect } from "react";
+import { ResumeProvider } from "./Context";
+import "./App.css";
+import Header from "./components/Layouts/Header";
 // import Navbar from './components/Layouts/Navbar';
-import Footer from './components/Layouts/Footer';
-import Main from './components/Main';
-import WebFont from 'webfontloader';
+import Footer from "./components/Layouts/Footer";
+import Main from "./components/Main";
+import MobileNotice from "./components/MobileNotice";
+import WebFont from "webfontloader";
 
 function App() {
-
   useEffect(() => {
     WebFont.load({
       google: {
-        families: ['Pacifico', 'Poppins']
-      }
+        families: ["Pacifico", "Poppins"],
+      },
     });
     const handleBeforeUnload = (event) => {
       event.preventDefault();
-      event.returnValue = "All your work will get lost. Are you sure you want to refresh?";
+      event.returnValue =
+        "All your work will get lost. Are you sure you want to refresh?";
     };
 
     window.addEventListener("beforeunload", handleBeforeUnload);
@@ -29,9 +30,10 @@ function App() {
   }, []);
 
   return (
-    <div style={{backgroundColor: "black"}}>
+    <div style={{ backgroundColor: "black" }}>
       <ResumeProvider>
         {/* <Navbar /> */}
+        <MobileNotice />
         <Header />
         <Main />
         <Footer />
