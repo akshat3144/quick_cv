@@ -3,15 +3,18 @@ import {
   Container,
   Stack,
   Text,
-  HStack,
   Heading,
   Button,
   useToast,
   Flex,
+  VStack,
+  HStack,
+  Divider,
 } from "@chakra-ui/react";
 import Builder from "./Builder";
 import ResumePreview from "./ResumePreview";
 import ThemeSelect from "./Theme/ThemeSelect";
+import TemplateSelect from "./Theme/TemplateSelect"; // Import the new component
 import { useReactToPrint } from "react-to-print";
 import { useResume } from "../Context";
 import { MdOutlineFileDownload } from "react-icons/md";
@@ -51,32 +54,43 @@ const Main = () => {
           Builder Dashboard
         </Heading>
         <Text color="whiteAlpha.700" fontSize="lg" maxW="3xl" mx="auto">
-          Customize your resume with our easy-to-use builder. Select colors, add
-          your details, and download when ready.
+          Customize your resume with our easy-to-use builder. Select colors,
+          templates, add your details, and download when ready.
         </Text>
       </Container>
 
       <Container maxW={"7xl"} px={8} my={8}>
-        <Flex
-          justifyContent={"space-between"}
-          alignItems="center"
-          pt={5}
-          direction={{ base: "column", sm: "row" }}
-          gap={4}
-        >
-          <ThemeSelect />
-          <Button
-            rightIcon={<MdOutlineFileDownload />}
-            onClick={handlePrint}
-            bg="primary.500"
-            color="white"
-            size="lg"
-            _hover={{ bg: "primary.600" }}
-            boxShadow="0 4px 12px rgba(40, 148, 236, 0.4)"
-          >
-            Download Resume
-          </Button>
-        </Flex>
+        <VStack spacing={5} align="stretch">
+          <Box bg="whiteAlpha.100" p={5} borderRadius="lg">
+            <Heading as="h3" size="md" color="white" mb={5}>
+              Template Settings
+            </Heading>
+
+            <Flex
+              direction={{ base: "column", md: "row" }}
+              gap={6}
+              justify="space-between"
+              align={{ base: "flex-start", md: "center" }}
+            >
+              <HStack spacing={8} flexWrap="wrap">
+                <ThemeSelect />
+                <TemplateSelect />
+              </HStack>
+
+              <Button
+                rightIcon={<MdOutlineFileDownload />}
+                onClick={handlePrint}
+                bg="primary.500"
+                color="white"
+                size="lg"
+                _hover={{ bg: "primary.600" }}
+                boxShadow="0 4px 12px rgba(40, 148, 236, 0.4)"
+              >
+                Download Resume
+              </Button>
+            </Flex>
+          </Box>
+        </VStack>
       </Container>
 
       <Stack
