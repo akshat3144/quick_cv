@@ -5,29 +5,34 @@ import {
   useRadioGroup,
   IconButton,
   Flex,
+  useBreakpointValue,
 } from "@chakra-ui/react";
 import React, { useRef } from "react";
 import { useResume } from "../../Context";
 import ThemeOption from "./ThemeOption";
-import { MdChevronLeft, MdChevronRight } from "react-icons/md";
+import { MdChevronLeft, MdChevronRight, MdColorLens } from "react-icons/md";
 
 const ThemeSelect = () => {
   const options = [
     { color: "primary.500", name: "Blue" },
-    { color: "#2563EB", name: "Royal Blue" }, // Professional blue
-    { color: "#0891B2", name: "Teal" }, // Modern teal
-    { color: "#4F46E5", name: "Indigo" }, // Deep indigo
-    { color: "#059669", name: "Emerald" }, // Rich emerald
-    { color: "#7C3AED", name: "Violet" }, // Vibrant violet
-    { color: "#DC2626", name: "Ruby Red" }, // Professional red
-    { color: "#EA580C", name: "Burnt Orange" }, // Warm orange
-    { color: "#0F172A", name: "Navy" }, // Dark navy
-    { color: "#4B5563", name: "Slate" }, // Business gray
-    { color: "#9D174D", name: "Magenta" }, // Deep magenta
+    { color: "#2563EB", name: "Royal Blue" },
+    { color: "#0891B2", name: "Teal" },
+    { color: "#4F46E5", name: "Indigo" },
+    { color: "#059669", name: "Emerald" },
+    { color: "#7C3AED", name: "Violet" },
+    { color: "#DC2626", name: "Ruby Red" },
+    { color: "#EA580C", name: "Burnt Orange" },
+    { color: "#0F172A", name: "Navy" },
+    { color: "#4B5563", name: "Slate" },
+    { color: "#9D174D", name: "Magenta" },
   ];
 
   const { theme, setTheme } = useResume();
   const scrollRef = useRef();
+  const colorInputRef = useRef();
+
+  // Hide custom color picker on mobile devices
+  const showCustomColor = useBreakpointValue({ base: false, md: true });
 
   const { getRootProps, getRadioProps } = useRadioGroup({
     name: "color",
@@ -49,6 +54,16 @@ const ThemeSelect = () => {
         left: newPosition,
         behavior: "smooth",
       });
+    }
+  };
+
+  const handleColorInputChange = (e) => {
+    setTheme(e.target.value);
+  };
+
+  const openColorPicker = () => {
+    if (colorInputRef.current) {
+      colorInputRef.current.click();
     }
   };
 
@@ -102,6 +117,30 @@ const ThemeSelect = () => {
                 </ThemeOption>
               );
             })}
+            {/* Custom Color Option - Only shown on larger screens */}
+            {showCustomColor && (
+              <Box as="label" position="relative" cursor="pointer">
+                <ThemeOption
+                  data-tooltip="Custom Color"
+                  icon={<MdColorLens size="20px" color="black" />}
+                  onClick={openColorPicker}
+                >
+                  custom
+                </ThemeOption>
+                <input
+                  type="color"
+                  ref={colorInputRef}
+                  onChange={handleColorInputChange}
+                  style={{
+                    opacity: 0,
+                    position: "absolute",
+                    width: "1px",
+                    height: "1px",
+                    overflow: "hidden",
+                  }}
+                />
+              </Box>
+            )}
           </HStack>
         </Box>
         <IconButton
