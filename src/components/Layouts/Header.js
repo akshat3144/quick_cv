@@ -8,11 +8,29 @@ import {
   Box,
   Container,
   Icon,
+  keyframes,
 } from "@chakra-ui/react";
-import { MdDescription } from "react-icons/md";
+import { MdDescription, MdKeyboardArrowDown } from "react-icons/md";
 import hero from "../../images/hero.svg";
 
 const Header = () => {
+  // Define the animation for the scroll indicator
+  const scrollAnimation = keyframes`
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(10px);
+    }
+  `;
+
+  // Convert the keyframes to a style object
+  const scrollIndicatorAnimation = `${scrollAnimation} 2s ease-in-out infinite`;
+
+  const scrollToBuilder = () => {
+    document.getElementById("builder").scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <>
       <Box
@@ -20,6 +38,7 @@ const Header = () => {
         backgroundImage="linear-gradient(to bottom, rgba(18, 19, 24, 0.8), var(--chakra-colors-darkBg-900))"
         pt={8}
         pb={20}
+        position="relative"
       >
         <Container maxW="7xl" as="main">
           <Stack
@@ -57,7 +76,7 @@ const Header = () => {
                 fontSize="xl"
                 fontFamily="Poppins"
               >
-                Fastest Resume Builder Available on Internet! Build, print, and
+                Fastest Resume Builder Available on Internet! Build, and
                 download your professional resume in minutes with our
                 easy-to-use tool.
               </Text>
@@ -110,6 +129,41 @@ const Header = () => {
             </Flex>
           </Stack>
         </Container>
+
+        {/* Scroll Down Indicator */}
+        <Box
+          position="absolute"
+          bottom="30px"
+          left="50%"
+          transform="translateX(-50%)"
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+          cursor="pointer"
+          onClick={scrollToBuilder}
+        >
+          <Text color="textColors.light" fontSize="sm" mb={2} opacity={0.8}>
+            Scroll Down
+          </Text>
+          <Box
+            width="30px"
+            height="50px"
+            borderRadius="full"
+            border="2px solid"
+            borderColor="primary.500"
+            display="flex"
+            justifyContent="center"
+            alignItems="flex-start"
+            padding="5px"
+          >
+            <Icon
+              as={MdKeyboardArrowDown}
+              color="primary.500"
+              boxSize={5}
+              animation={scrollIndicatorAnimation}
+            />
+          </Box>
+        </Box>
       </Box>
     </>
   );
