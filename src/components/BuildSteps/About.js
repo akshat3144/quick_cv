@@ -45,6 +45,7 @@ const About = () => {
               type="text"
               variant="filled"
               placeholder="Full Name"
+              color="#3094ec"
             />
           </FormControl>
           <FormControl>
@@ -56,6 +57,7 @@ const About = () => {
               type="text"
               variant="filled"
               placeholder="Role"
+              color="#3094ec"
             />
           </FormControl>
         </HStack>
@@ -70,6 +72,7 @@ const About = () => {
               type="email"
               variant="filled"
               placeholder="Email"
+              color="#3094ec"
             />
           </FormControl>
           <FormControl>
@@ -81,6 +84,7 @@ const About = () => {
               type="tel"
               variant="filled"
               placeholder="Phone"
+              color="#3094ec"
             />
           </FormControl>
         </HStack>
@@ -95,6 +99,7 @@ const About = () => {
               type="text"
               variant="filled"
               placeholder="Address"
+              color="#3094ec"
             />
           </FormControl>
           <FormControl>
@@ -106,6 +111,7 @@ const About = () => {
               type="url"
               variant="filled"
               placeholder="https://linkedin.com"
+              color="#3094ec"
             />
           </FormControl>
         </HStack>

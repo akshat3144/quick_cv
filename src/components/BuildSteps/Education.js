@@ -106,6 +106,7 @@ const Education = () => {
                   type="text"
                   variant="filled"
                   placeholder="Degree"
+                  color="#3094ec"
                 />
                 <Input
                   value={education.school || ""}
@@ -114,6 +115,7 @@ const Education = () => {
                   type="text"
                   variant="filled"
                   placeholder="School"
+                  color="#3094ec"
                 />
               </VStack>
 
@@ -130,6 +132,7 @@ const Education = () => {
                     min="1900"
                     max="2030"
                     placeholder="Start Year"
+                    color="#3094ec"
                   />
                 </FormControl>
 
@@ -145,6 +148,7 @@ const Education = () => {
                     min="1900"
                     max="2030"
                     placeholder="End Year"
+                    color="#3094ec"
                   />
                 </FormControl>
 
@@ -158,6 +162,7 @@ const Education = () => {
                     type="text"
                     variant="filled"
                     placeholder="Grade"
+                    color="#3094ec"
                   />
                 </FormControl>
               </HStack>

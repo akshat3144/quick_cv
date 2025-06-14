@@ -71,6 +71,7 @@ const Projects = () => {
                   type="text"
                   variant="filled"
                   placeholder="Project Name"
+                  color="#3094ec"
                 />
 
                 <Input
@@ -81,6 +82,7 @@ const Projects = () => {
                   type="url"
                   variant="filled"
                   placeholder="Project URL"
+                  color="#3094ec"
                 />
 
                 <Textarea
@@ -90,6 +92,7 @@ const Projects = () => {
                   id="description"
                   variant="filled"
                   placeholder="Description..."
+                  color="#3094ec"
                 />
 
                 <Button

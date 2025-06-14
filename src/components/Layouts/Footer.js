@@ -48,7 +48,7 @@ const Footer = () => {
               aria-label="GitHub"
               isRound
               as={"a"}
-              href={"https://github.com/"}
+              href={"https://github.com/akshat3144/quick_cv"}
               target="_blank"
               bg={"darkBg.700"}
               color="textColors.light"

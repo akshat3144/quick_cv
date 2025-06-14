@@ -47,7 +47,7 @@ const Builder = () => {
           sx={{
             "::-webkit-scrollbar": { height: "4px" },
             "::-webkit-scrollbar-thumb": {
-              backgroundColor: "darkBg.600",
+              backgroundColor: "#3094ec",
               borderRadius: "4px",
             },
           }}

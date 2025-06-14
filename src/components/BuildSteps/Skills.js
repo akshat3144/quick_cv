@@ -75,6 +75,7 @@ const Skills = () => {
             type="text"
             variant="filled"
             placeholder="Enter a skill (e.g. JavaScript, Python)"
+            color="#3094ec"
             bg="whiteAlpha.100"
             _hover={{ bg: "whiteAlpha.200" }}
             _focus={{ bg: "whiteAlpha.200", borderColor: "primary.500" }}

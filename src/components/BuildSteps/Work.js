@@ -71,6 +71,7 @@ const Work = () => {
                 type="text"
                 variant="filled"
                 placeholder="Position"
+                color="#3094ec"
                 mb={3}
               />
 
@@ -82,6 +83,7 @@ const Work = () => {
                   type="text"
                   variant="filled"
                   placeholder="Company"
+                  color="#3094ec"
                 />
                 <Select
                   value={work.type}
@@ -89,6 +91,7 @@ const Work = () => {
                   name="type"
                   variant="filled"
                   placeholder="Employment Type"
+                  color="#3094ec"
                 >
                   <option value="Full-time">Full-time</option>
                   <option value="Part-time">Part-time</option>
@@ -108,6 +111,7 @@ const Work = () => {
                     type="month"
                     variant="filled"
                     placeholder="Start Date"
+                    color="#3094ec"
                   />
                 </FormControl>
 
@@ -121,6 +125,7 @@ const Work = () => {
                     type="month"
                     variant="filled"
                     placeholder="Start Date"
+                    color="#3094ec"
                   />
                 </FormControl>
               </HStack>
@@ -134,6 +139,7 @@ const Work = () => {
                   id="description"
                   variant="filled"
                   placeholder="Description..."
+                  color="#3094ec"
                 />
               </FormControl>
 
