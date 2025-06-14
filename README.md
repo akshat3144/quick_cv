@@ -6,7 +6,7 @@
 
 Quick CV is a powerful, intuitive resume builder application that allows users to create professional resumes quickly with beautiful templates. Built with React and Node.js, this application provides a seamless experience for creating, customizing, saving, and exporting resumes in PDF format.
 
-![Quick CV Screenshot](image/README/1729510562388.png)
+![Quick CV Screenshot](public/image.png)
 
 ## ✨ Features
 
