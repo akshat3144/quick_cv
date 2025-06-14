@@ -1,5 +1,5 @@
 {
-  "name": "quick-cv-server",
+  "name": "quickcv-server",
   "version": "1.0.0",
   "description": "Server for QuickCV application",
   "main": "server.js",

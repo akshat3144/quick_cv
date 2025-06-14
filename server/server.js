@@ -10,7 +10,15 @@ dotenv.config();
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin:
+      process.env.NODE_ENV === "production"
+        ? "https://quickcv-rrf2.onrender.com"
+        : "http://localhost:3000",
+    credentials: true,
+  })
+);
 
 // Connect to MongoDB
 mongoose
