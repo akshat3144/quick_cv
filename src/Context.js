@@ -8,7 +8,16 @@ export const ResumeProvider = ({ children }) => {
   const printElem = useRef();
 
   const [theme, setTheme] = useState("#10c4ec");
-  const [template, setTemplate] = useState("divider"); // Add template state
+  const [template, setTemplate] = useState("divider");
+
+  const [visibleSections, setVisibleSections] = useState({
+    education: true,
+    skills: true,
+    work: true,
+    projects: true,
+    certificates: true,
+    achievements: true,
+  }); // Add section visibility state
 
   const [about, setAbout] = useState({
     name: "",
@@ -159,7 +168,9 @@ export const ResumeProvider = ({ children }) => {
     theme,
     setTheme,
     template,
-    setTemplate, // Add template to context value
+    setTemplate,
+    visibleSections,
+    setVisibleSections, // Add section visibility to context
   };
 
   return (

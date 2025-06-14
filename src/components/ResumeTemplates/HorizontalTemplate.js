@@ -28,6 +28,7 @@ const HorizontalTemplate = () => {
     projects,
     Certificates,
     AchievementList,
+    visibleSections,
   } = useResume();
 
   return (
@@ -85,144 +86,156 @@ const HorizontalTemplate = () => {
       <Divider borderColor={theme} mb={6} />
 
       {/* Skills Section */}
-      <Box mb={6}>
-        <Heading as="h3" size="md" color={theme} mb={3}>
-          SKILLS
-        </Heading>
-        <Wrap>
-          {skills.map((skill, index) => (
-            <Tag
-              size="md"
-              borderRadius="md"
-              variant="solid"
-              bg={theme}
-              key={index}
-              mb={1}
-            >
-              <TagLabel>{skill.name}</TagLabel>
-            </Tag>
-          ))}
-        </Wrap>
-      </Box>
-
-      <Divider mb={6} />
+      {visibleSections.skills && (
+        <Box mb={6}>
+          <Heading as="h3" size="md" color={theme} mb={3}>
+            SKILLS
+          </Heading>
+          <Wrap>
+            {skills.map((skill, index) => (
+              <Tag
+                size="md"
+                borderRadius="md"
+                variant="solid"
+                bg={theme}
+                key={index}
+                mb={1}
+              >
+                <TagLabel>{skill.name}</TagLabel>
+              </Tag>
+            ))}
+          </Wrap>
+          <Divider mt={6} />
+        </Box>
+      )}
 
       {/* Experience Section */}
-      <Box mb={6}>
-        <Heading as="h3" size="md" color={theme} mb={3}>
-          WORK EXPERIENCE
-        </Heading>
-        {workList.map((work, index) => (
-          <Box key={index} mb={4}>
-            <Flex justifyContent="space-between" alignItems="flex-start">
-              <Box>
-                <Text fontWeight="bold">
-                  {work.position || "Full Stack Developer"}
+      {visibleSections.work && (
+        <Box mb={6}>
+          <Heading as="h3" size="md" color={theme} mb={3}>
+            WORK EXPERIENCE
+          </Heading>
+          {workList.map((work, index) => (
+            <Box key={index} mb={4}>
+              <Flex justifyContent="space-between" alignItems="flex-start">
+                <Box>
+                  <Text fontWeight="bold">
+                    {work.position || "Full Stack Developer"}
+                  </Text>
+                  <Text fontSize="sm">
+                    {work.company || "XYZ Infotech Services"} -{" "}
+                    {work.type || "Full-time"}
+                  </Text>
+                </Box>
+                <Text fontSize="sm" fontStyle="italic">
+                  {work.startDate || "2018-03"} - {work.endDate || "2021-12"}
                 </Text>
-                <Text fontSize="sm">
-                  {work.company || "XYZ Infotech Services"} -{" "}
-                  {work.type || "Full-time"}
-                </Text>
-              </Box>
-              <Text fontSize="sm" fontStyle="italic">
-                {work.startDate || "2018-03"} - {work.endDate || "2021-12"}
+              </Flex>
+              <Text fontSize="sm" mt={1}>
+                {work.description ||
+                  "Fixed bugs from existing websites and implemented enhancements that significantly improved web functionality and speed."}
               </Text>
-            </Flex>
-            <Text fontSize="sm" mt={1}>
-              {work.description ||
-                "Fixed bugs from existing websites and implemented enhancements that significantly improved web functionality and speed."}
-            </Text>
-          </Box>
-        ))}
-      </Box>
-
-      <Divider mb={6} />
+            </Box>
+          ))}
+          <Divider mt={6} />
+        </Box>
+      )}
 
       {/* Education Section */}
-      <Box mb={6}>
-        <Heading as="h3" size="md" color={theme} mb={3}>
-          EDUCATION
-        </Heading>
-        {educationList.map((education, index) => (
-          <Box key={index} mb={4}>
-            <Flex justifyContent="space-between" alignItems="flex-start">
-              <Box>
-                <Text fontWeight="bold">
-                  {education.degree || "B.Tech Computer Science"}
-                </Text>
-                <Text fontSize="sm">{education.school || "MIT"}</Text>
-              </Box>
-              <Box textAlign="right">
-                <Text fontSize="sm" fontStyle="italic">
-                  {education.startYr || "2000"} - {education.endYr || "2004"}
-                </Text>
-                <Text fontSize="sm">{education.grade || "10.0 CGPA"}</Text>
-              </Box>
-            </Flex>
-          </Box>
-        ))}
-      </Box>
-
-      <Divider mb={6} />
+      {visibleSections.education && (
+        <Box mb={6}>
+          <Heading as="h3" size="md" color={theme} mb={3}>
+            EDUCATION
+          </Heading>
+          {educationList.map((education, index) => (
+            <Box key={index} mb={4}>
+              <Flex justifyContent="space-between" alignItems="flex-start">
+                <Box>
+                  <Text fontWeight="bold">
+                    {education.degree || "B.Tech Computer Science"}
+                  </Text>
+                  <Text fontSize="sm">{education.school || "MIT"}</Text>
+                </Box>
+                <Box textAlign="right">
+                  <Text fontSize="sm" fontStyle="italic">
+                    {education.startYr || "2000"} - {education.endYr || "2004"}
+                  </Text>
+                  <Text fontSize="sm">{education.grade || "10.0 CGPA"}</Text>
+                </Box>
+              </Flex>
+            </Box>
+          ))}
+          <Divider mt={6} />
+        </Box>
+      )}
 
       {/* Projects Section */}
-      <Box mb={6}>
-        <Heading as="h3" size="md" color={theme} mb={3}>
-          PROJECTS
-        </Heading>
-        {projects.map((project, index) => (
-          <Box key={index} mb={4}>
-            <HStack as="a" href={project.url} target="_blank" spacing={0.5}>
-              <Text fontWeight="bold">{project.name || "Project Name"}</Text>
-              <BiLinkExternal />
-            </HStack>
-            <Text fontSize="sm" mt={1}>
-              {project.description ||
-                "Lorem ipsum dolor sit amet consectetur adipisicing."}
-            </Text>
-          </Box>
-        ))}
-      </Box>
-
-      <Divider mb={6} />
+      {visibleSections.projects && (
+        <Box mb={6}>
+          <Heading as="h3" size="md" color={theme} mb={3}>
+            PROJECTS
+          </Heading>
+          {projects.map((project, index) => (
+            <Box key={index} mb={4}>
+              <HStack as="a" href={project.url} target="_blank" spacing={0.5}>
+                <Text fontWeight="bold">{project.name || "Project Name"}</Text>
+                <BiLinkExternal />
+              </HStack>
+              <Text fontSize="sm" mt={1}>
+                {project.description ||
+                  "Lorem ipsum dolor sit amet consectetur adipisicing."}
+              </Text>
+            </Box>
+          ))}
+          <Divider mt={6} />
+        </Box>
+      )}
 
       {/* Certificates Section */}
-      <Box mb={6}>
-        <Heading as="h3" size="md" color={theme} mb={3}>
-          CERTIFICATES
-        </Heading>
-        {Certificates.map((certificate, index) => (
-          <Box key={index} mb={4}>
-            <HStack as="a" href={certificate.url} target="_blank" spacing={0.5}>
-              <Text fontWeight="bold">
-                {certificate.name || "Certificate Title"}
+      {visibleSections.certificates && (
+        <Box mb={6}>
+          <Heading as="h3" size="md" color={theme} mb={3}>
+            CERTIFICATES
+          </Heading>
+          {Certificates.map((certificate, index) => (
+            <Box key={index} mb={4}>
+              <HStack
+                as="a"
+                href={certificate.url}
+                target="_blank"
+                spacing={0.5}
+              >
+                <Text fontWeight="bold">
+                  {certificate.name || "Certificate Title"}
+                </Text>
+                <BiLinkExternal />
+              </HStack>
+              <Text fontSize="sm" mt={1}>
+                {certificate.description ||
+                  "Lorem ipsum dolor sit amet consectetur adipisicing."}
               </Text>
-              <BiLinkExternal />
-            </HStack>
-            <Text fontSize="sm" mt={1}>
-              {certificate.description ||
-                "Lorem ipsum dolor sit amet consectetur adipisicing."}
-            </Text>
-          </Box>
-        ))}
-      </Box>
-
-      <Divider mb={6} />
+            </Box>
+          ))}
+          <Divider mt={6} />
+        </Box>
+      )}
 
       {/* Achievements Section */}
-      <Box>
-        <Heading as="h3" size="md" color={theme} mb={3}>
-          ACHIEVEMENTS
-        </Heading>
-        {AchievementList.map((achievement, index) => (
-          <Box key={index} mb={4}>
-            <Text fontWeight="bold">
-              {achievement.degree || "Achievement Name"}
-            </Text>
-            <Text fontSize="sm">{achievement.school || "Description"}</Text>
-          </Box>
-        ))}
-      </Box>
+      {visibleSections.achievements && (
+        <Box>
+          <Heading as="h3" size="md" color={theme} mb={3}>
+            ACHIEVEMENTS
+          </Heading>
+          {AchievementList.map((achievement, index) => (
+            <Box key={index} mb={4}>
+              <Text fontWeight="bold">
+                {achievement.degree || "Achievement Name"}
+              </Text>
+              <Text fontSize="sm">{achievement.school || "Description"}</Text>
+            </Box>
+          ))}
+        </Box>
+      )}
     </Box>
   );
 };

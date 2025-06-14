@@ -16,6 +16,7 @@ import Builder from "./Builder";
 import ResumePreview from "./ResumePreview";
 import ThemeSelect from "./Theme/ThemeSelect";
 import TemplateSelect from "./Theme/TemplateSelect";
+import SectionControl from "./Theme/SectionControl";
 import { useReactToPrint } from "react-to-print";
 import { useResume } from "../Context";
 import { MdOutlineFileDownload } from "react-icons/md";
@@ -82,6 +83,9 @@ const Main = () => {
                   <TemplateSelect />
                 </Box>
               </Flex>
+
+              {/* Add section control here */}
+              <SectionControl />
 
               {/* Center download button on desktop */}
               <Center pt={4}>
