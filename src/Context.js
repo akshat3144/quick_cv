@@ -1,15 +1,41 @@
 import { createContext, useContext, useRef, useState } from "react";
 
-const ResumeContext = createContext();
-
-export const useResume = () => useContext(ResumeContext);
+// Check that your context includes all needed state variables
+export const ResumeContext = createContext({
+  about: {},
+  setAbout: () => {},
+  educationList: [],
+  setEducationList: () => {},
+  skills: [],
+  setSkills: () => {},
+  workList: [],
+  setWorkList: () => {},
+  projects: [],
+  setProjects: () => {},
+  Certificates: [],
+  setCertificates: () => {},
+  AchievementList: [],
+  setAchievementList: () => {},
+  theme: "",
+  setTheme: () => {},
+  template: "",
+  setTemplate: () => {},
+  visibleSections: {},
+  setVisibleSections: () => {},
+});
 
 export const ResumeProvider = ({ children }) => {
   const printElem = useRef();
 
+  const [about, setAbout] = useState({});
+  const [educationList, setEducationList] = useState([]);
+  const [skills, setSkills] = useState([]);
+  const [workList, setWorkList] = useState([]);
+  const [projects, setProjects] = useState([]);
+  const [Certificates, setCertificates] = useState([]);
+  const [AchievementList, setAchievementList] = useState([]);
   const [theme, setTheme] = useState("#10c4ec");
   const [template, setTemplate] = useState("divider");
-
   const [visibleSections, setVisibleSections] = useState({
     education: true,
     skills: true,
@@ -18,136 +44,6 @@ export const ResumeProvider = ({ children }) => {
     certificates: true,
     achievements: true,
   }); // Add section visibility state
-
-  const [about, setAbout] = useState({
-    name: "",
-    role: "",
-    email: "",
-    phone: "",
-    address: "",
-    linkedin: "",
-    picture: "",
-  });
-
-  const [educationList, setEducationList] = useState([
-    {
-      id: "",
-      degree: "",
-      school: "",
-      startYr: 0,
-      endYr: 0,
-      grade: "",
-    },
-  ]);
-
-  const [skills, setSkills] = useState([
-    {
-      id: 1,
-      name: "JavaScript",
-    },
-    {
-      id: 2,
-      name: "ReactJS",
-    },
-    {
-      id: 3,
-      name: "NodeJS",
-    },
-    {
-      id: 4,
-      name: "MongoDB",
-    },
-    {
-      id: 5,
-      name: "ExpressJS",
-    },
-    {
-      id: 6,
-      name: "PHP",
-    },
-    {
-      id: 7,
-      name: ".Net",
-    },
-    {
-      id: 8,
-      name: "Java",
-    },
-    {
-      id: 9,
-      name: "RestAPI",
-    },
-    {
-      id: 10,
-      name: "jQuery",
-    },
-    {
-      id: 11,
-      name: "MySQL",
-    },
-    {
-      id: 12,
-      name: "Ajax",
-    },
-    {
-      id: 13,
-      name: "GitHub",
-    },
-    {
-      id: 14,
-      name: "HTML",
-    },
-    {
-      id: 15,
-      name: "CSS",
-    },
-    {
-      id: 16,
-      name: "TailwindCSS",
-    },
-    {
-      id: 17,
-      name: "Bootstrap",
-    },
-  ]);
-
-  const [workList, setWorkList] = useState([
-    {
-      id: "",
-      position: "",
-      company: "",
-      type: "",
-      startDate: "",
-      endDate: "",
-      description: "",
-    },
-  ]);
-
-  const [projects, setProjects] = useState([
-    {
-      id: "",
-      name: "",
-      description: "",
-      url: "",
-    },
-  ]);
-
-  const [Certificates, setCertificates] = useState([
-    {
-      id: "",
-      name: "",
-      description: "",
-      url: "",
-    },
-  ]);
-
-  const [AchievementList, setAchievementList] = useState([
-    {
-      id: "",
-      degree: "",
-      school: "",
-    },
-  ]);
 
   const value = {
     about,
@@ -177,3 +73,5 @@ export const ResumeProvider = ({ children }) => {
     <ResumeContext.Provider value={value}>{children}</ResumeContext.Provider>
   );
 };
+
+export const useResume = () => useContext(ResumeContext);

@@ -28,11 +28,7 @@ const Footer = () => {
           spacing={4}
         >
           <HStack spacing={2} fontWeight={"medium"} fontSize={"md"}>
-            <Text>&copy; 2024 QuickCV - Made with</Text>
-            <Box color="red.400" display="inline-block">
-              <FaHeart />
-            </Box>
-            <Text>by</Text>
+            <Text>&copy; 2024 QuickCV - Made by</Text>
             <Link
               href={"https://www.linkedin.com/in/akshat-gupta-840740285/"}
               target={"_blank"}

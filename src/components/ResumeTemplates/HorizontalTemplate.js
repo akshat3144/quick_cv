@@ -21,21 +21,21 @@ import { BiLinkExternal } from "react-icons/bi";
 const HorizontalTemplate = () => {
   const {
     theme,
-    about,
-    educationList,
-    skills,
-    workList,
-    projects,
-    Certificates,
-    AchievementList,
-    visibleSections,
+    about = {}, // Provide default empty object
+    educationList = [],
+    skills = [],
+    workList = [],
+    projects = [],
+    Certificates = [],
+    AchievementList = [],
+    visibleSections = {},
   } = useResume();
 
   return (
     <Box p={4} h="100%">
       {/* Header */}
       <VStack spacing={2} alignItems="center" mb={6}>
-        {about.picture && (
+        {about && about.picture && (
           <Box
             borderRadius="full"
             overflow="hidden"

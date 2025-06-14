@@ -18,14 +18,14 @@ import { BiLinkExternal } from "react-icons/bi";
 const DividerTemplate = () => {
   const {
     theme,
-    about,
-    educationList,
-    skills,
-    workList,
-    projects,
-    Certificates,
-    AchievementList,
-    visibleSections,
+    about = {}, // Provide default empty object
+    educationList = [],
+    skills = [],
+    workList = [],
+    projects = [],
+    Certificates = [],
+    AchievementList = [],
+    visibleSections = {},
   } = useResume();
 
   const imgStyle = {
@@ -38,7 +38,7 @@ const DividerTemplate = () => {
   return (
     <Box p={4} h="100%">
       <HStack>
-        {about.picture && (
+        {about && about.picture && (
           <img style={imgStyle} src={about.picture} alt="avatar" />
         )}
 
@@ -52,21 +52,28 @@ const DividerTemplate = () => {
         </VStack>
       </HStack>
 
-      <HStack bg={theme} color={"white"} p={4} justifyContent={"space-between"}>
+      <HStack
+        color={"gray.800"}
+        p={4}
+        justifyContent={"space-between"}
+        borderTop={`1px solid ${theme}`}
+        borderBottom={`1px solid ${theme}`}
+        my={2}
+      >
         <HStack spacing={1}>
-          <MdMail />{" "}
+          <MdMail color={theme} />{" "}
           <Text>{about.email ? about.email : "mark80@gmail.com"}</Text>
         </HStack>
         <HStack spacing={1}>
-          <MdLocalPhone />{" "}
+          <MdLocalPhone color={theme} />{" "}
           <Text>{about.phone ? about.phone : "+919999999999"}</Text>
         </HStack>
         <HStack spacing={1}>
-          <MdLocationPin />{" "}
+          <MdLocationPin color={theme} />{" "}
           <Text>{about.address ? about.address : "California, USA"}</Text>
         </HStack>
         <HStack spacing={1}>
-          <RiLinkedinBoxFill />{" "}
+          <RiLinkedinBoxFill color={theme} />{" "}
           <Text as="a" href={about.linkedin}>
             LinkedIn
           </Text>
