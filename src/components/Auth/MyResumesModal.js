@@ -100,9 +100,11 @@ const MyResumesModal = ({ isOpen, onClose, onResumeSelect }) => {
       });
     } catch (error) {
       console.error("Delete resume error:", error);
+      const errorMessage =
+        error.response?.data?.msg || "Failed to delete resume";
       toast({
         title: "Error",
-        description: "Failed to delete resume",
+        description: errorMessage,
         status: "error",
         duration: 3000,
         isClosable: true,
