@@ -1,4 +1,4 @@
-# Quick CV - Modern Resume Builder
+# Quick CV - Fastest Resume Builder
 
 ![Quick CV Logo](public/logo.png)
 
