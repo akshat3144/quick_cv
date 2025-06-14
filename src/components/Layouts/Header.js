@@ -39,10 +39,11 @@ const Header = () => {
         pt={8}
         pb={20}
         position="relative"
+        minH="100vh"
       >
         <Container maxW="7xl" as="main">
           <Stack
-            py={{ base: 12, md: 20 }}
+            py={{ base: 8, md: 8 }}
             spacing={{ base: 8, md: 16 }}
             direction={{ base: "column", md: "row" }}
             align="center"
